@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import SideNavBar from './components/SideNavBar';
+import Home from './components/Home';
+import Products from './components/Products';
+import ProductForm from './components/ProductForm';
+import Suppliers from './components/Suppliers';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <SideNavBar />
+      </div>
+      <main className="container" style={{ maxWidth: '92%' }}>
+        <Switch>
+          {/* <Route path="/suppliers/:id" component={ProductForm} /> */}
+          <Route path="/suppliers" component={Suppliers} />
+          <Route path="/products/:id" component={ProductForm} />
+          <Route path="/products/new" component={ProductForm} />
+          <Route path="/products" component={Products} />
+          <Route path="/" exact component={Home} />
+        </Switch>
+      </main>
     </div>
   );
 }
